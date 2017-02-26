@@ -11,7 +11,7 @@ Mutex and cooperation are two types of interaction between threads.
   - used when accessing a shared resource
 
 - Cooperation
-  - guarantees things happen in a specific order.
+  - guarantees things happen in a specific order
 
 Sometimes they are both called synchronization and sometimes only coopration is called synchronization.
 
@@ -20,7 +20,12 @@ Sometimes they are both called synchronization and sometimes only coopration is 
   - [cond_wait unlocks and locks the mutex](https://stackoverflow.com/questions/14924469/does-pthread-cond-waitcond-t-mutex-unlock-and-then-lock-the-mutex)
   - [another good discussion](http://stackoverflow.com/questions/2763714/why-do-pthreads-condition-variable-functions-require-a-mutex)
   
+## Implementation
 - Mutex
+  - hardware: atomically set a flag
+  - software: Peterson's algorithm, etc
+
+Other models can be built upon mutex, or implemented using similar ideas. 
 
 ## Atomicity
 An atomic opeation can be one machine instruction, such as Intel's CMPXCHG. Such atomic opeations can be used to implement a mutex by atomically setting a memory location as a flag. When other threads see the flag is set, they either busy wait or release the cpu. The hadeware implementation of such atomic instruction can be complicated and need cache coherence protocol. 
