@@ -21,10 +21,21 @@ Mutex and cooperation are two types of interaction between threads.
 
 Sometimes they are both called synchronization and sometimes only coopration is called synchronization.
 - Condition variables
+  - cv = a mutex + notify system
   - cv has to be used together with a mutex and in such a pattern as below
   - [cond_wait unlocks and locks the mutex](https://stackoverflow.com/questions/14924469/does-pthread-cond-waitcond-t-mutex-unlock-and-then-lock-the-mutex)
   - [another good discussion](http://stackoverflow.com/questions/2763714/why-do-pthreads-condition-variable-functions-require-a-mutex)
+
+- Monitor
+  - as a general concept: condition variables + a mutex
+  - in Java means a lock and a wait set
   
+- Semaphore
+  - use as a mutex: guard the critical section with sem.wait() and sem.post()
+  - use as a condition variable
+    - by incrementng and decrementing the semaphore, a sem == 0 condition is implied as wait condition
+    - in a Monitor, a wait condition and a cv are two variables. The two are combined in semaphore
+    
 ## Implementation
 - Mutex
   - hardware: atomically set a flag. Other threads busy wait or sleep.
