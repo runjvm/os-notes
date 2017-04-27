@@ -1,5 +1,5 @@
 ## Terms
-Mutex can both mean mutual exclusion(ME), which is a result, or mutex lock, which is a lock model to guarantee mutual exclusion. Mutual exclusion can also be lock-free when it uses atomic compare-and-swap. Lock-free in this context means high-level lock free, since machine locks are always needed for hardware atomic instructions.
+In this post's context, mutex means a lock, and mutual exclusion (ME) means the situation where mutual exclusion is guaranteed. Mutual exclusion can also be lock-free when it uses atomic compare-and-swap. Lock-free in this context means high-level lock free, since machine locks are always needed for hardware atomic instructions.
 
 ## Atomicity
 Atomicity means not interruptible(no process switch) and thus ensures mutual exclusion on a single processor machine. Although by itself atomic instruction does not provide mutual exclusion on a multiprocessor machine, since two processes could execute the atomic operation at the same time, memory(or cache) often provides memory lock to guarantee mutual exclusion in such case. See below. In this sense, atomicity always implies mutual exclusion. 
@@ -15,15 +15,17 @@ Low level ME can be provided by memory or CPU, because once at a really low leve
 
 Intel's `LOCK` prefix is an example of hardware atomicity, it's often used to make `CMPXCHG` atomic. Note that `LOCK` is implied for `XCHG`.
 
-## Models
-Mutex and cooperation are two types of interaction between threads. 
-- Mutex
+## Synchronization
+ME and cooperation are two types of interaction between threads. 
+- Mutual exclusion
   - guarantees only one thread executes a critical region at a given time
   - used when accessing a shared resource
 - Cooperation
   - guarantees things happen in a specific order
 
 Sometimes they are both called synchronization and sometimes only coopration is called synchronization.
+
+## Models
 - Condition variables
   - cv is a notification system
   - cv has to be used together with a mutex and in such a pattern as below
