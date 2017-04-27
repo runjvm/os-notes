@@ -13,6 +13,8 @@ In some context, atomic opration implies lock-free. For example, in HotSpot VM's
 Low level ME can be provided by memory or CPU, because once at a really low level, two accesses to the same memory location cannot really happen "at the same time". High level ME is built upon low level ME. A cpu can use its own machanism to ensure atomicity of an instruction, it may also uses supports from RAM, such as dual-port RAM. A DPRAM set an internal flag when CPU1 issuses an atomic operation. If CPU2 issues an operation to the same location, DPRAM issues a BUSY interrupt. 
 [test-and-set hardware imeplementation](https://en.wikipedia.org/wiki/Test-and-set)
 
+Intel's `LOCK` prefix is an example of hardware atomicity, it's often used to make `CMPXCHG` atomic.
+
 ## Models
 Mutex and cooperation are two types of interaction between threads. 
 - Mutex
