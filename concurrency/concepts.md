@@ -25,7 +25,7 @@ Mutex and cooperation are two types of interaction between threads.
 
 Sometimes they are both called synchronization and sometimes only coopration is called synchronization.
 - Condition variables
-  - cv = a mutex + notify system
+  - cv is a notification system
   - cv has to be used together with a mutex and in such a pattern as below
   - [cond_wait unlocks and locks the mutex](https://stackoverflow.com/questions/14924469/does-pthread-cond-waitcond-t-mutex-unlock-and-then-lock-the-mutex)
   - [another good discussion](http://stackoverflow.com/questions/2763714/why-do-pthreads-condition-variable-functions-require-a-mutex)
