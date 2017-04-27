@@ -5,7 +5,7 @@ In this post's context, mutex means a lock, and mutual exclusion (ME) means the 
 Atomicity means not interruptible(no process switch) and thus ensures mutual exclusion on a single processor machine. Although by itself atomic instruction does not provide mutual exclusion on a multiprocessor machine, since two processes could execute the atomic operation at the same time, memory(or cache) often provides memory lock to guarantee mutual exclusion in such case. See below. In this sense, atomicity always implies mutual exclusion. 
 [ref](http://www.cs.nott.ac.uk/~psznza/G52CON/lecture4.pdf)
 
-Low level atomicity is accomplished by hardware lock. At a high level, critical section's ME can be guaranteed by a mutex lock, or a semaphore, or some other lock-free approaches such as compare-and-swap.
+Low level atomicity is accomplished by hardware lock. At a high level, critical section's ME can be guaranteed by a mutex lock, or a semaphore, or some other lock-free approaches such as compare-and-swap. Low level atomicity is more lightweight than a high-level lock, because a high-level lock often requires thread operation or spinning. 
 
 In some context, atomic opration implies lock-free. For example, in HotSpot VM's context, the lightweight lock is called "aquired by atomic operation" sometimes.
 
