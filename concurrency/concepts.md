@@ -7,7 +7,7 @@ Atomicity means not interruptible(no process switch) and thus ensures mutual exc
 
 Low level atomicity is accomplished by hardware lock. At a high level, critical section's ME can be guaranteed by a mutex lock, or a semaphore, or some other lock-free approaches such as compare-and-swap. Low level atomicity is more lightweight than a high-level lock, because a high-level lock often requires thread operation. 
 
-In some context, atomic opration implies lock-free. For example, in HotSpot VM's context, the lightweight lock is called "aquired by atomic operation" sometimes.
+In some context, atomic opration implies lock-free. For example, in HotSpot VM's context, the lightweight lock is sometimes referred to as "aquired by atomic operation" .
 
 ## Hardware Atomicity
 Low level ME can be provided by memory or CPU, because once at a really low level, two accesses to the same memory location cannot really happen "at the same time". High level ME is built upon low level ME. A cpu can use its own machanism to ensure atomicity of an instruction, it may also uses supports from RAM, such as dual-port RAM. A DPRAM set an internal flag when CPU1 issuses an atomic operation. If CPU2 issues an operation to the same location, DPRAM issues a BUSY interrupt. 
