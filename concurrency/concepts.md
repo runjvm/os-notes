@@ -3,7 +3,7 @@ In this post's context, mutex means a lock, and mutual exclusion (ME) means the 
 
 ## Atomicity
 Atomicity means not interruptible(no process switch) and thus ensures mutual exclusion on a single processor machine. Although by itself atomic instruction does not provide mutual exclusion on a multiprocessor machine, since two processes could execute the atomic operation at the same time, memory(or cache) often provides memory lock to guarantee mutual exclusion in such case. See below. In this sense, atomicity always implies mutual exclusion. 
-[ref](http://www.cs.nott.ac.uk/~psznza/G52CON/lecture4.pdf)
+[reference](http://www.cs.nott.ac.uk/~psznza/G52CON/lecture4.pdf)
 
 Low level atomicity is accomplished by hardware lock. At a high level, critical section's ME can be guaranteed by a mutex lock, or a semaphore, or some other lock-free approaches such as compare-and-swap. Low level atomicity is more lightweight than a high-level lock, because a high-level lock often requires thread operation. 
 
@@ -29,6 +29,7 @@ Sometimes they are both called synchronization and sometimes only coopration is 
 - Condition variables
   - cv is a notification system
   - cv has to be used together with a mutex and in such a pattern as below
+  - suspending a thread needs a predicate, and checking/modifying this predicate needs a mutex
   - [cond_wait unlocks and locks the mutex](https://stackoverflow.com/questions/14924469/does-pthread-cond-waitcond-t-mutex-unlock-and-then-lock-the-mutex)
   - [another good discussion](http://stackoverflow.com/questions/2763714/why-do-pthreads-condition-variable-functions-require-a-mutex)
 
@@ -51,4 +52,3 @@ Other models can be built upon mutex, or implemented using similar hardware atom
 
 ## Spinning vs Switching
 Defines how a thread should wait when it has to wait. It can wait by polling, if the waiting time is expected to be short. It may also be suspended and put into a wait queue, and try again later or wait for a signal.
-
