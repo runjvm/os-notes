@@ -1,5 +1,5 @@
 ## Terms
-In this post's context, mutex means a lock, and mutual exclusion (ME) means the situation where mutual exclusion is guaranteed. Mutual exclusion can also be lock-free when it uses some atomic operations. Lock-free in this context means free of high-level lock, since hardware locks are always needed for hardware atomic instructions.
+In this post's context, mutex means a lock, and mutual exclusion (ME) means the situation where mutual exclusion is guaranteed. Mutual exclusion can also be lock-free when it uses some atomic operations. Lock-free in this context means free of high-level locks, since hardware locks are always needed for hardware atomic instructions.
 
 ## Atomicity
 Atomicity means not interruptible(no process switch) and thus ensures mutual exclusion on a single processor machine. Although by itself atomic instruction does not provide mutual exclusion on a multiprocessor machine, since two processes could execute the atomic operation at the same time, memory(or cache) often provides memory lock to guarantee mutual exclusion in such case. See below. In this sense, atomicity always implies mutual exclusion. 
