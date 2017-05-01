@@ -41,7 +41,7 @@ Sometimes they are both called synchronization and sometimes only coopration is 
   - use as a mutex: guard the critical section with sem.wait() and sem.post()
   - use as a condition variable
     - by incrementng and decrementing the semaphore, a sem == 0 condition is implied as wait condition
-    - in a Monitor, a wait condition and a cv are two variables. The two are combined in semaphore
+  - In some context, a mutex lock can also mean a semaphore
     
 ## Implementation
 - Mutex
